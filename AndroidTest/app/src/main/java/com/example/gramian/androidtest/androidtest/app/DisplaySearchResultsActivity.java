@@ -9,7 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.gramian.androidtest.R;
+import com.example.gramian.androidtest.androidtest.service.github.GitHubService;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,9 +29,19 @@ public class DisplaySearchResultsActivity extends AppCompatActivity {
         String searchQuery = intent.getStringExtra(MainActivity.SEARCH_QUERY);
 
 
-        listView = (ListView) findViewById(R.id.search_results);
         List<String> resultList = new ArrayList<String>();
-        resultList.add(searchQuery);
+
+        GitHubService gitHubService = new GitHubService();
+        try {
+            List<GitHubService.Contributor> contributors = gitHubService.getContributors();
+            for (GitHubService.Contributor contributor : contributors) {
+                resultList.add(contributor.login);
+            }
+        }
+        catch (IOException e) {
+            System.err.println("Caught IOException: " + e.getMessage());
+        }
+        listView = (ListView) findViewById(R.id.search_results);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                 this,
                 android.R.layout.simple_list_item_1,
