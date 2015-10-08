@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name=".androidtest.app.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
@@ -19,13 +19,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DisplaySearchResultsActivity"
+            android:name=".androidtest.app.DisplaySearchResultsActivity"
             android:label="@string/title_activity_display_search_results"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".androidtest.app.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.gramian.androidtest.MainActivity" />
+                android:value=".androidtest.app.MainActivity" />
         </activity>
     </application>
 
