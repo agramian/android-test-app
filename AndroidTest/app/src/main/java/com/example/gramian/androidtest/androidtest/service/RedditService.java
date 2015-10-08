@@ -24,7 +24,7 @@ public final class RedditService {
     public static class SearchResult extends ArrayList<String> {}
 
     public interface Reddit {
-        @GET("/r/all/search.json")
+        @GET("/r/all/search.json?limit=100")
         Call<SearchResult> search(@Query("q") String query);
     }
 

@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -54,6 +55,8 @@ public class DisplaySearchResultsActivity extends AppCompatActivity {
         if (results == null) {
             results = Collections.emptyList();
         }
+
+        findViewById(R.id.loading).animate().alpha(0).start();
 
         listView = (ListView) findViewById(R.id.search_results);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
