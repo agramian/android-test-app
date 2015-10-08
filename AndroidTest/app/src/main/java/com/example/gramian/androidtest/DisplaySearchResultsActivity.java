@@ -1,5 +1,7 @@
 package com.example.gramian.androidtest;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -31,7 +33,6 @@ public class DisplaySearchResultsActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.search_results);
         List<String> resultList = new ArrayList<String>();
         resultList.add(searchQuery);
-
         // This is the array adapter, it takes the context of the activity as a
         // first parameter, the type of list view as a second parameter and your
         // array as a third parameter.
@@ -41,6 +42,15 @@ public class DisplaySearchResultsActivity extends AppCompatActivity {
                 resultList );
 
         listView.setAdapter(arrayAdapter);
+        new AlertDialog.Builder(this)
+                .setTitle("Results")
+                .setMessage(String.format("Search returned %s result(s).", resultList.size()))
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // do nothing
+                    }
+                })
+                .show();
     }
 
 }
