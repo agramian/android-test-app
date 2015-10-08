@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -18,6 +19,7 @@ import java.util.List;
 
 public class DisplaySearchResultsActivity extends AppCompatActivity {
 
+    private static final String TAG = DisplaySearchResultsActivity.class.getSimpleName();
     private ListView listView;
 
     @Override
@@ -29,18 +31,13 @@ public class DisplaySearchResultsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String searchQuery = intent.getStringExtra(MainActivity.SEARCH_QUERY);
 
-
+        RedditService redditService = new RedditService();
         List<String> resultList = new ArrayList<String>();
-
-        GitHubService gitHubService = new GitHubService();
         try {
-            List<GitHubService.Contributor> contributors = gitHubService.getContributors();
-            for (GitHubService.Contributor contributor : contributors) {
-                resultList.add(contributor.login);
-            }
+             resultList = redditService.search(searchQuery);
         }
-        catch (IOException e) {
-            System.err.println("Caught IOException: " + e.getMessage());
+        catch (Exception e) {
+            Log.d(TAG, "Caught Exception: " + e.getMessage());
         }
         listView = (ListView) findViewById(R.id.search_results);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
