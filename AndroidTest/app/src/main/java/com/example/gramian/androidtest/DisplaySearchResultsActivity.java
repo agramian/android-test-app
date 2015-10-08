@@ -22,28 +22,15 @@ public class DisplaySearchResultsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_search_results);
-        /*
-        //setContentView(R.layout.activity_display_search_results);
 
         // Get the query from the intent
         Intent intent = getIntent();
         String searchQuery = intent.getStringExtra(MainActivity.SEARCH_QUERY);
 
 
-        // Create the text view
-        TextView textView = new TextView(this);
-        textView.setTextSize(40);
-        textView.setText(searchQuery);
-
-        // Set the text view as the activity layout
-        setContentView(textView);
-        */
         listView = (ListView) findViewById(R.id.search_results);
-        // Instanciating an array list (you don't need to do this,
-        // you already have yours).
         List<String> resultList = new ArrayList<String>();
-        resultList.add("foo");
-        resultList.add("bar");
+        resultList.add(searchQuery);
 
         // This is the array adapter, it takes the context of the activity as a
         // first parameter, the type of list view as a second parameter and your
