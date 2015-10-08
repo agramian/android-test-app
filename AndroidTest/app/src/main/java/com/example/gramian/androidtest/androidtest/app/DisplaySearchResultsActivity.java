@@ -14,6 +14,10 @@ import com.example.gramian.androidtest.androidtest.service.RedditService;
 import java.util.Collections;
 import java.util.List;
 
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
+
 public class DisplaySearchResultsActivity extends AppCompatActivity {
 
     private static final String TAG = DisplaySearchResultsActivity.class.getSimpleName();
@@ -28,23 +32,39 @@ public class DisplaySearchResultsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String searchQuery = intent.getStringExtra(MainActivity.SEARCH_QUERY);
 
-        RedditService redditService = new RedditService();
-        List<String> resultList = Collections.emptyList();
-        try {
-             resultList = redditService.search(searchQuery);
-        } catch (Exception e) {
-            e.printStackTrace();
+        new RedditService().search(searchQuery, new Callback<RedditService.SearchResult>() {
+            @Override
+            public void onResponse(Response<RedditService.SearchResult> response, Retrofit retrofit) {
+                if (response.isSuccess()) {
+                    onResults(response.body());
+                } else {
+                    onResults(null);
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                t.printStackTrace();
+                onResults(null);
+            }
+        });
+    }
+
+    private void onResults(List<String> results) {
+        if (results == null) {
+            results = Collections.emptyList();
         }
+
         listView = (ListView) findViewById(R.id.search_results);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
-                resultList);
+                results);
 
         listView.setAdapter(arrayAdapter);
         new AlertDialog.Builder(this)
                 .setTitle("Results")
-                .setMessage(String.format("Search returned %s result(s).", resultList.size()))
+                .setMessage(String.format("Search returned %s result(s).", results.size()))
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // do nothing
@@ -52,5 +72,4 @@ public class DisplaySearchResultsActivity extends AppCompatActivity {
                 })
                 .show();
     }
-
 }

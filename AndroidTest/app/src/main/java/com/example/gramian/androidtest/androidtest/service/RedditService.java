@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import retrofit.Call;
+import retrofit.Callback;
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
 import retrofit.http.GET;
@@ -39,9 +40,8 @@ public final class RedditService {
         reddit = retrofit.create(Reddit.class);
     }
 
-    public List<String> search(String query) throws IOException {
+    public void search(String query, Callback<SearchResult> callback) {
         // Create a call instance for looking up Retrofit contributors.
-        Call<SearchResult> call = reddit.search(query);
-        return call.execute().body();
+        reddit.search(query).enqueue(callback);
     }
 }
