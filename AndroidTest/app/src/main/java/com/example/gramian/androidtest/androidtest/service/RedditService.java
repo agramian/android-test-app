@@ -7,9 +7,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit.Retrofit;
 import retrofit.Call;
 import retrofit.GsonConverterFactory;
+import retrofit.Retrofit;
 import retrofit.http.GET;
 import retrofit.http.Query;
 
@@ -20,19 +20,17 @@ public final class RedditService {
     private Retrofit retrofit;
     private Reddit reddit;
 
-    class SearchResult {
-        public String title;
-    }
+    public static class SearchResult extends ArrayList<String> {}
 
     public interface Reddit {
         @GET("/r/all/search.json")
-        Call<List<SearchResult>> search(@Query("q") String query);
+        Call<SearchResult> search(@Query("q") String query);
     }
 
     public RedditService() {
         Gson gson =
                 new GsonBuilder()
-                        .registerTypeAdapter(Content.class, new RedditDeserializer())
+                        .registerTypeAdapter(SearchResult.class, new RedditDeserializer())
                         .create();
         retrofit = new Retrofit.Builder()
                 .baseUrl(API_URL)
@@ -43,12 +41,7 @@ public final class RedditService {
 
     public List<String> search(String query) throws IOException {
         // Create a call instance for looking up Retrofit contributors.
-        Call<List<SearchResult>> call = reddit.search(query);
-        List<SearchResult> results = call.execute().body();
-        List<String> resultList = new ArrayList<String>();
-        for (SearchResult result : results) {
-            resultList.add(result.title);
-        }
-        return resultList;
+        Call<SearchResult> call = reddit.search(query);
+        return call.execute().body();
     }
 }

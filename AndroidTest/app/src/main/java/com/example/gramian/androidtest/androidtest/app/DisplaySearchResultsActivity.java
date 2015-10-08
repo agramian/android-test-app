@@ -5,16 +5,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.gramian.androidtest.R;
 import com.example.gramian.androidtest.androidtest.service.RedditService;
-import com.example.gramian.androidtest.androidtest.service.github.GitHubService;
 
-import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class DisplaySearchResultsActivity extends AppCompatActivity {
@@ -32,15 +29,14 @@ public class DisplaySearchResultsActivity extends AppCompatActivity {
         String searchQuery = intent.getStringExtra(MainActivity.SEARCH_QUERY);
 
         RedditService redditService = new RedditService();
-        List<String> resultList = new ArrayList<String>();
+        List<String> resultList = Collections.emptyList();
         try {
              resultList = redditService.search(searchQuery);
-        }
-        catch (Exception e) {
-            Log.d(TAG, "Caught Exception: " + e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         listView = (ListView) findViewById(R.id.search_results);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
                 resultList);
