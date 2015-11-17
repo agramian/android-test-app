@@ -31,7 +31,7 @@ public class DisplaySearchResultsActivity extends AppCompatActivity {
 
         // Get the query from the intent
         Intent intent = getIntent();
-        String searchQuery = intent.getStringExtra(MainActivity.SEARCH_QUERY);
+        String searchQuery = intent.getStringExtra(RedditApiSearchActivity.SEARCH_QUERY);
 
         new RedditService().search(searchQuery, new Callback<RedditService.SearchResult>() {
             @Override
