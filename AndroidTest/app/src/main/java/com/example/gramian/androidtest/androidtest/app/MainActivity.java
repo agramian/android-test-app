@@ -19,4 +19,8 @@ public class MainActivity extends AppCompatActivity {
     public void startActivityReddictApiSearch(View view) {
         startActivity(new Intent(this, RedditApiSearchActivity.class));
     }
+
+    public void startActivityCollapsingToolbar(View view) {
+        startActivity(new Intent(this, CollapsingToolbarActivity.class));
+    }
 }
