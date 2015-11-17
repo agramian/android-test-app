@@ -4,4 +4,20 @@
     android:layout_height="wrap_content"
     android:layout_width="wrap_content">
 
+    <TextView
+        android:id="@+id/collapsingToolbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_margin="@dimen/fab_margin"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut mollis eleifend gravida. Vivamus elit diam, congue in sollicitudin vitae, sagittis ut orci. Morbi congue ac dui at pharetra. Sed nec risus quis mauris interdum gravida a quis elit. Nulla pretium nibh in arcu vulputate, a facilisis eros pretium. Nam non sollicitudin risus. Pellentesque fringilla ultricies justo, in euismod libero mollis quis. In hac habitasse platea dictumst. Sed pulvinar turpis odio, sed pulvinar orci congue et. Vivamus vulputate iaculis aliquet. Integer urna nunc, placerat ultrices nulla a, pellentesque tristique felis. Vestibulum sit amet hendrerit eros, vel venenatis libero. Vivamus ligula sem, pulvinar a pretium nec, finibus feugiat nisi. Mauris imperdiet at sapien nec volutpat. Etiam efficitur gravida nisi, quis elementum leo placerat vel.
+
+Morbi elementum ac ante at auctor. Proin non urna gravida, ullamcorper ex sit amet, tristique tortor. Nullam purus sapien, ullamcorper sed ornare quis, efficitur quis ligula. Maecenas vehicula erat sit amet mi porttitor pharetra. Etiam a nunc porta, fermentum justo non, dictum nibh. Sed consequat vel enim vel tempor. Vivamus tincidunt sem a sagittis hendrerit. Quisque ultrices ex felis, a egestas nunc suscipit non. Aenean commodo mauris id libero blandit sagittis id a mauris. Cras aliquet ante orci, a feugiat dui faucibus vel. Nulla viverra nulla a consectetur feugiat. Aenean accumsan felis ut lobortis lobortis. Suspendisse sodales vehicula nulla sagittis facilisis. Curabitur id odio nec dolor pharetra consectetur. Proin et malesuada quam.
+
+Cras pharetra nisl interdum maximus congue. Proin urna felis, iaculis sed fringilla vel, fermentum eget velit. Aenean eget ipsum varius, sagittis dolor nec, consectetur velit. Mauris aliquam risus sit amet sollicitudin euismod. Vestibulum lacinia ornare purus, et accumsan eros scelerisque tincidunt. Duis non elit eget libero egestas mattis ac quis sapien. Nulla sit amet enim sed diam varius scelerisque nec sed turpis.
+
+Proin vehicula, tellus eget iaculis dapibus, dolor ipsum tristique elit, vitae pellentesque dui mauris in est. Nulla pulvinar elit ut bibendum egestas. Mauris posuere semper suscipit. Fusce rhoncus, justo vel commodo dignissim, velit sapien dapibus lorem, non mollis mi mi sit amet mauris. Aliquam erat volutpat. Duis est diam, hendrerit consectetur diam vitae, ultricies tempor nulla. Nam sed viverra eros, ac feugiat lacus. Cras ullamcorper risus ac sagittis dignissim. Donec tristique sodales feugiat. Integer cursus velit a eros egestas efficitur.
+
+In lacinia dictum turpis, at vestibulum neque venenatis et. Curabitur fermentum nibh leo, a pulvinar dui tincidunt ac. Pellentesque vitae dictum dui. Proin quis nisl porttitor, interdum mauris vel, rhoncus elit. Ut vitae tortor venenatis risus tincidunt convallis a non nisi. Aenean magna elit, hendrerit eget leo et, ultricies faucibus quam. Phasellus euismod ut eros eu porta. Quisque tincidunt sapien rutrum consequat mattis. Donec sed libero commodo ipsum vestibulum porta at et dolor. Mauris lobortis dui id eros condimentum ornare." >
+    </TextView>
+
 </LinearLayout>
