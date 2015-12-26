@@ -2,6 +2,7 @@ package com.example.gramian.androidtest.androidtest.app;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
@@ -46,9 +47,11 @@ public class AlphabetIndexerActivity  extends AppCompatActivity implements View.
         for (int i = 0; i < fruits.length; i++) {
             String fruit = fruits[i];
             String index = fruit.substring(0, 1).toUpperCase();
-
-            if (mapIndex.get(index) == null)
+            if (TextUtils.isDigitsOnly(index)) {
+                mapIndex.put("#", i);
+            } else if (mapIndex.get(index) == null) {
                 mapIndex.put(index, i);
+            }
         }
     }
 
@@ -66,6 +69,12 @@ public class AlphabetIndexerActivity  extends AppCompatActivity implements View.
                 textView.setOnClickListener(this);
                 indexLayout.addView(textView);
             }
+        }
+        if (indexList.contains("#")) {
+            textView = (TextView) getLayoutInflater().inflate(R.layout.content_side_index_item, null);
+            textView.setText("#");
+            textView.setOnClickListener(this);
+            indexLayout.addView(textView);
         }
     }
 
