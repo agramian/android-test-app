@@ -9,9 +9,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.gramian.androidtest.R;
+import com.ibm.icu.text.UnicodeSet;
+import com.ibm.icu.util.LocaleData;
+import com.ibm.icu.util.ULocale;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,7 +45,7 @@ public class AlphabetIndexerActivity  extends AppCompatActivity implements View.
         mapIndex = new LinkedHashMap<String, Integer>();
         for (int i = 0; i < fruits.length; i++) {
             String fruit = fruits[i];
-            String index = fruit.substring(0, 1);
+            String index = fruit.substring(0, 1).toUpperCase();
 
             if (mapIndex.get(index) == null)
                 mapIndex.put(index, i);
@@ -50,14 +54,18 @@ public class AlphabetIndexerActivity  extends AppCompatActivity implements View.
 
     private void displayIndex() {
         LinearLayout indexLayout = (LinearLayout) findViewById(R.id.side_index);
-
         TextView textView;
         List<String> indexList = new ArrayList<String>(mapIndex.keySet());
-        for (String index : indexList) {
-            textView = (TextView) getLayoutInflater().inflate(R.layout.content_side_index_item, null);
-            textView.setText(index);
-            textView.setOnClickListener(this);
-            indexLayout.addView(textView);
+        UnicodeSet localAlphabet =  LocaleData.getExemplarSet(ULocale.forLocale(getResources().getConfiguration().locale), 0);
+        Iterator<String> it = localAlphabet.iterator();
+        while(it.hasNext()) {
+            String letter = it.next().toUpperCase();
+            if (indexList.contains(letter)) {
+                textView = (TextView) getLayoutInflater().inflate(R.layout.content_side_index_item, null);
+                textView.setText(letter);
+                textView.setOnClickListener(this);
+                indexLayout.addView(textView);
+            }
         }
     }
 
