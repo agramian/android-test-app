@@ -39,6 +39,11 @@
             android:label="@string/title_activity_collapsing_toolbar"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity
+            android:name=".androidtest.app.AlphabetIndexerActivity"
+            android:label="@string/title_activity_alphabet_indexer"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>

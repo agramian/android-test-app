@@ -24,4 +24,9 @@ public class MainActivity extends AppCompatActivity {
     public void startActivityCollapsingToolbar(View view) {
         startActivity(new Intent(this, CollapsingToolbarActivity.class));
     }
+
+    public void startActivityAlphabetIndexer(View view) {
+        startActivity(new Intent(this, AlphabetIndexerActivity.class));
+    }
+
 }

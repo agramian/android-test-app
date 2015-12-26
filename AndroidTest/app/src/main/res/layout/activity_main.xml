@@ -20,4 +20,16 @@
         android:onClick="startActivityCollapsingToolbar">
     </TextView>
 
+    <TextView
+        android:id="@+id/alphabetIndexer"
+        android:layout_height="@dimen/row_entry"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_gravity="center_vertical"
+        android:paddingLeft="@dimen/fab_margin"
+        android:background="@drawable/border"
+        android:text="Alphabet Indexer"
+        android:onClick="startActivityAlphabetIndexer">
+    </TextView>
+
 </LinearLayout>
