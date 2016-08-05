@@ -2,11 +2,9 @@ package com.abtingramian.android.androidtest.feature.recyclerview_animations;
 
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.example.gramian.androidtest.R;
+import android.widget.FrameLayout;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -15,6 +13,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
     private RecyclerViewAnimations mainActivity;
     private ArrayList<Integer> colors = new ArrayList<>();
+    private int itemWidth;
+    private int itemHeight;
 
     public ItemAdapter(RecyclerViewAnimations mainActivity) {
         this.mainActivity = mainActivity;
@@ -22,12 +22,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
+        View view = new View(parent.getContext());
         final ViewHolder colorViewHolder = new ViewHolder(view);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mainActivity.onColorsListItemClicked(v);
+                mainActivity.onItemClicked(v);
             }
         });
         return colorViewHolder;
@@ -36,6 +36,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         int color = colors.get(position);
+        holder.itemView.setLayoutParams(new FrameLayout.LayoutParams(itemWidth, itemHeight));
         holder.itemView.setBackgroundColor(color);
     }
 
@@ -57,6 +58,14 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
     public void changeItemAtPosition(int position) {
         colors.set(position, getRandomColor());
         notifyItemChanged(position);
+    }
+
+    public void setItemWidth(int itemWidth) {
+        this.itemWidth = itemWidth;
+    }
+
+    public void setItemHeight(int itemHeight) {
+        this.itemHeight = itemHeight;
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {

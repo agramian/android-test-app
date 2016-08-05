@@ -81,8 +81,10 @@
         <item>5000</item>
         <item>10000</item>
     </string-array>
+    <string name="animation_default">Default</string>
     <string name="animation_slide_in_left">Slide in left</string>
     <string-array name="animations_array">
+        <item>@string/animation_default</item>
         <item>@string/animation_slide_in_left</item>
     </string-array>
 </resources>

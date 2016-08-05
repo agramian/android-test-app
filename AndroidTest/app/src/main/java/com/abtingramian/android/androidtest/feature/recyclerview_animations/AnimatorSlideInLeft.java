@@ -87,7 +87,7 @@ public class AnimatorSlideInLeft extends SimpleItemAnimator {
     public boolean animateRemove(final RecyclerView.ViewHolder holder) {
         holder.itemView.animate()
                 .translationX(-holder.itemView.getWidth())
-                .setDuration(2000)
+                .setDuration(getRemoveDuration())
                 .setListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(Animator animation) {
