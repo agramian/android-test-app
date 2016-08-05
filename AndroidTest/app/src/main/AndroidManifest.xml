@@ -40,7 +40,7 @@
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name=".androidtest.app.AlphabetIndexerActivity"
+            android:name="com.abtingramian.android.androidtest.feature.alphabet_indexer.AlphabetIndexerActivity"
             android:label="@string/title_activity_alphabet_indexer"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>

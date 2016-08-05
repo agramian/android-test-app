@@ -1,4 +1,4 @@
-package com.example.gramian.androidtest.androidtest.app;
+package com.abtingramian.android.androidtest.feature.alphabet_indexer;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

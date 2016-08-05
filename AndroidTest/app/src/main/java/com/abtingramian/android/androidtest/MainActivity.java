@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.abtingramian.android.androidtest.feature.alphabet_indexer.AlphabetIndexerActivity;
 import com.abtingramian.android.androidtest.feature.collapsing_toolbar.CollapsingToolbarActivity;
 import com.abtingramian.android.androidtest.feature.rest_api.RedditApiSearchActivity;
 import com.example.gramian.androidtest.R;

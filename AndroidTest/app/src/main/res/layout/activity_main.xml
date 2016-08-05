@@ -22,13 +22,8 @@
 
     <TextView
         android:id="@+id/alphabetIndexer"
-        android:layout_height="@dimen/row_entry"
-        android:layout_width="match_parent"
-        android:gravity="center_vertical"
-        android:layout_gravity="center_vertical"
-        android:paddingLeft="@dimen/fab_margin"
-        android:background="@drawable/border"
-        android:text="Alphabet Indexer"
+        style="@style/FeatureRow"
+        android:text="@string/feature_alphabet_indexer"
         android:onClick="startActivityAlphabetIndexer">
     </TextView>
 

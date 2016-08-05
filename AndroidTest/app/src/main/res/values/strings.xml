@@ -5,6 +5,7 @@
     <string name="button_search">Search</string>
     <string name="feature_collapsing_toolbar">Collapsing Toolbar Parallax Animation</string>
     <string name="feature_rest_api">REST API</string>
+    <string name="feature_alphabet_indexer">Alphabet Indexer</string>
     <string name="title_activity_display_search_results">Search Results</string>
     <string name="title_activity_reddit_api_search">RedditApiSearchActivity</string>
     <string name="title_activity_collapsing_toolbar">CollapsingToolbarActivity</string>
