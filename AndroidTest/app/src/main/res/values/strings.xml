@@ -9,10 +9,12 @@
     <string name="feature_collapsing_toolbar">Collapsing Toolbar Parallax Animation</string>
     <string name="feature_rest_api">REST API</string>
     <string name="feature_alphabet_indexer">Alphabet Indexer</string>
+    <string name="feature_recyclerview_animations">RecyclerView Animations</string>
     <string name="title_activity_display_search_results">Search Results</string>
-    <string name="title_activity_reddit_api_search">RedditApiSearchActivity</string>
-    <string name="title_activity_collapsing_toolbar">CollapsingToolbarActivity</string>
-    <string name="title_activity_alphabet_indexer">AlphabetIndexerActivity</string>
+    <string name="title_activity_reddit_api_search">Reddit Api Search</string>
+    <string name="title_activity_collapsing_toolbar">Collapsing Toolbar</string>
+    <string name="title_activity_alphabet_indexer">Alphabet Indexer</string>
+    <string name="title_activity_recyclerview_animations">RecyclerView Animations</string>
     <string-array name="fruits_array">
         <item>Apples</item>
         <item>Apricots</item>
@@ -64,4 +66,9 @@
         <item>Woodapple</item>
         <item>123</item>
     </string-array>
+    <string name="animation">Animation</string>
+    <string name="delete">Delete</string>
+    <string name="change">Change</string>
+    <string name="horizontal">Horizontal</string>
+    <string name="vertical">Vertical</string>
 </resources>

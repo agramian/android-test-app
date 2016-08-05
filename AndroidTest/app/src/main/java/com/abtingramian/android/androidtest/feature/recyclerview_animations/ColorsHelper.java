@@ -1,4 +1,4 @@
-package frogermcs.io.recyclerviewanimations;
+package com.abtingramian.android.androidtest.feature.recyclerview_animations;
 
 import java.util.Arrays;
 import java.util.List;

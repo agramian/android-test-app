@@ -1,4 +1,4 @@
-package frogermcs.io.recyclerviewanimations;
+package com.abtingramian.android.androidtest.feature.recyclerview_animations;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,20 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.gramian.androidtest.R;
+
 import java.util.ArrayList;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-
-/**
- * Created by Miroslaw Stanek on 06.01.2016.
- */
 public class ColorsAdapter extends RecyclerView.Adapter<ColorsAdapter.ColorViewHolder> {
 
-    private MainActivity mainActivity;
+    private RecyclerViewAnimations mainActivity;
     private ArrayList<Integer> colors = new ArrayList<>();
 
-    public ColorsAdapter(MainActivity mainActivity) {
+    public ColorsAdapter(RecyclerViewAnimations mainActivity) {
         this.mainActivity = mainActivity;
     }
 
@@ -65,12 +61,11 @@ public class ColorsAdapter extends RecyclerView.Adapter<ColorsAdapter.ColorViewH
 
     static class ColorViewHolder extends RecyclerView.ViewHolder {
 
-        @Bind(R.id.tvColor)
         TextView tvColor;
 
         public ColorViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
+            //ButterKnife.bind(this, itemView);
         }
     }
 }

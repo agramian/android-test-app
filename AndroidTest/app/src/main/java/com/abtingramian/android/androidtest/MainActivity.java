@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 import com.abtingramian.android.androidtest.feature.collapsing_toolbar.CollapsingToolbarActivity;
+import com.abtingramian.android.androidtest.feature.recyclerview_animations.RecyclerViewAnimations;
 import com.example.gramian.androidtest.R;
 
 import java.util.HashMap;

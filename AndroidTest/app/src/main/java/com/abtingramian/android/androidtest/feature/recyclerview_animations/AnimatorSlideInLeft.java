@@ -1,3 +1,5 @@
+package com.abtingramian.android.androidtest.feature.recyclerview_animations;
+
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.support.annotation.NonNull;
