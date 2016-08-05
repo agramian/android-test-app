@@ -18,13 +18,25 @@ public class RecyclerViewAnimations extends AppCompatActivity {
     CheckBox cbPredictive;
     Button button;
 
-    private ColorsAdapter colorsAdapter;
+    private ItemAdapter colorsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recyclerview_animations);
-        //setupColorsList();
+        /*
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false) {
+            @Override
+            public boolean supportsPredictiveItemAnimations() {
+                return cbPredictive.isChecked();
+            }
+        };
+        rvColors.setItemAnimator(new AnimatorSlideInLeft());
+        /*
+        rvColors.setLayoutManager(layoutManager);
+
+        colorsAdapter = new ItemAdapter(this);
+        rvColors.setAdapter(colorsAdapter);
         /*
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,22 +44,6 @@ public class RecyclerViewAnimations extends AppCompatActivity {
                 colorsAdapter.addItemAtPosition(colorsAdapter.getItemCount());
             }
         });*/
-    }
-
-    private void setupColorsList() {
-        final LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false) {
-            @Override
-            public boolean supportsPredictiveItemAnimations() {
-                return cbPredictive.isChecked();
-            }
-        };
-        /*
-        rvColors.setLayoutManager(layoutManager);
-
-        colorsAdapter = new ColorsAdapter(this);
-        rvColors.setAdapter(colorsAdapter);
-
-        setupRecyclerViewAnimator();*/
     }
 
     public void onColorsListItemClicked(View view) {
@@ -64,7 +60,4 @@ public class RecyclerViewAnimations extends AppCompatActivity {
         }
     }
 
-    private void setupRecyclerViewAnimator() {
-        rvColors.setItemAnimator(new AnimatorSlideInLeft());
-    }
 }

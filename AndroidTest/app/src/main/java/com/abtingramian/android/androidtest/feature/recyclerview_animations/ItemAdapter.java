@@ -1,28 +1,29 @@
 package com.abtingramian.android.androidtest.feature.recyclerview_animations;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.gramian.androidtest.R;
 
 import java.util.ArrayList;
+import java.util.Random;
 
-public class ColorsAdapter extends RecyclerView.Adapter<ColorsAdapter.ColorViewHolder> {
+public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
     private RecyclerViewAnimations mainActivity;
     private ArrayList<Integer> colors = new ArrayList<>();
 
-    public ColorsAdapter(RecyclerViewAnimations mainActivity) {
+    public ItemAdapter(RecyclerViewAnimations mainActivity) {
         this.mainActivity = mainActivity;
     }
 
     @Override
-    public ColorViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
-        final ColorViewHolder colorViewHolder = new ColorViewHolder(view);
+        final ViewHolder colorViewHolder = new ViewHolder(view);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,10 +34,9 @@ public class ColorsAdapter extends RecyclerView.Adapter<ColorsAdapter.ColorViewH
     }
 
     @Override
-    public void onBindViewHolder(ColorViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         int color = colors.get(position);
         holder.itemView.setBackgroundColor(color);
-        holder.tvColor.setText("#" + Integer.toHexString(color));
     }
 
     @Override
@@ -50,22 +50,25 @@ public class ColorsAdapter extends RecyclerView.Adapter<ColorsAdapter.ColorViewH
     }
 
     public void addItemAtPosition(int position) {
-        colors.add(position, ColorsHelper.getRandomColor());
+        colors.add(position, getRandomColor());
         notifyItemInserted(position);
     }
 
     public void changeItemAtPosition(int position) {
-        colors.set(position, ColorsHelper.getRandomColor());
+        colors.set(position, getRandomColor());
         notifyItemChanged(position);
     }
 
-    static class ColorViewHolder extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvColor;
-
-        public ColorViewHolder(View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
-            //ButterKnife.bind(this, itemView);
         }
     }
+
+    private int getRandomColor() {
+        Random rnd = new Random();
+        return Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+    }
+
 }

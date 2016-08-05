@@ -71,4 +71,18 @@
     <string name="change">Change</string>
     <string name="horizontal">Horizontal</string>
     <string name="vertical">Vertical</string>
+    <string name="add">Add</string>
+    <string name="duration_ms">Duration (ms)</string>
+    <string-array name="duration_array">
+        <item>100</item>
+        <item>500</item>
+        <item>1000</item>
+        <item>2500</item>
+        <item>5000</item>
+        <item>10000</item>
+    </string-array>
+    <string name="animation_slide_in_left">Slide in left</string>
+    <string-array name="animations_array">
+        <item>@string/animation_slide_in_left</item>
+    </string-array>
 </resources>
