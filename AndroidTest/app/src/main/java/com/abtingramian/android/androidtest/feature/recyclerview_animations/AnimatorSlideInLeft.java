@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SimpleItemAnimator;
 import android.view.animation.Interpolator;
@@ -57,6 +58,7 @@ public class AnimatorSlideInLeft extends SimpleItemAnimator {
 
     @Override
     public boolean animateAdd(final RecyclerView.ViewHolder holder) {
+        ViewCompat.setTranslationZ(holder.itemView, holder.getPosition());
         holder.itemView.setTranslationX(-holder.itemView.getWidth());
         holder.itemView.animate()
                 .translationX(0)
@@ -85,6 +87,7 @@ public class AnimatorSlideInLeft extends SimpleItemAnimator {
 
     @Override
     public boolean animateRemove(final RecyclerView.ViewHolder holder) {
+        ViewCompat.setTranslationZ(holder.itemView, holder.getAdapterPosition() > 0 ? holder.getAdapterPosition() * -1 : -1);
         holder.itemView.animate()
                 .translationX(-holder.itemView.getWidth())
                 .setDuration(getRemoveDuration())
