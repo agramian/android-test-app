@@ -1,4 +1,4 @@
-package com.example.gramian.androidtest.androidtest.service;
+package com.abtingramian.android.androidtest.feature.rest_api;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;

@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".androidtest.app.MainActivity"
+            android:name="com.abtingramian.android.androidtest.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
@@ -21,21 +21,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".androidtest.app.DisplaySearchResultsActivity"
+            android:name="com.abtingramian.android.androidtest.feature.rest_api.DisplaySearchResultsActivity"
             android:label="@string/title_activity_display_search_results"
-            android:parentActivityName=".androidtest.app.MainActivity"
+            android:parentActivityName="com.abtingramian.android.androidtest.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".androidtest.app.MainActivity" />
+                android:value="com.abtingramian.android.androidtest.MainActivity" />
         </activity>
         <activity
-            android:name=".androidtest.app.RedditApiSearchActivity"
+            android:name="com.abtingramian.android.androidtest.feature.rest_api.RedditApiSearchActivity"
             android:label="@string/title_activity_reddit_api_search"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name=".androidtest.app.CollapsingToolbarActivity"
+            android:name="com.abtingramian.android.androidtest.feature.collapsing_toolbar.CollapsingToolbarActivity"
             android:label="@string/title_activity_collapsing_toolbar"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>

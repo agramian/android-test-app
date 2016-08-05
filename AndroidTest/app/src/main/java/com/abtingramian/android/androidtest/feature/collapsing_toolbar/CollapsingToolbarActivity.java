@@ -1,4 +1,4 @@
-package com.example.gramian.androidtest.androidtest.app;
+package com.abtingramian.android.androidtest.feature.collapsing_toolbar;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;

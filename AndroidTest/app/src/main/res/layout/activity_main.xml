@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,25 +8,15 @@
 
     <TextView
         android:id="@+id/redditApi"
-        android:layout_height="@dimen/row_entry"
-        android:layout_width="match_parent"
-        android:gravity="center_vertical"
-        android:layout_gravity="center_vertical"
-        android:paddingLeft="@dimen/fab_margin"
-        android:background="@drawable/border"
-        android:text="Reddit API Search"
+        style="@style/FeatureRow"
+        android:text="@string/feature_rest_api"
         android:onClick="startActivityReddictApiSearch">
     </TextView>
 
     <TextView
         android:id="@+id/collapsingToolbar"
-        android:layout_height="@dimen/row_entry"
-        android:layout_width="match_parent"
-        android:gravity="center_vertical"
-        android:layout_gravity="center_vertical"
-        android:paddingLeft="@dimen/fab_margin"
-        android:background="@drawable/border"
-        android:text="Collapsing Toolbar Parallax Animation"
+        style="@style/FeatureRow"
+        android:text="@string/feature_collapsing_toolbar"
         android:onClick="startActivityCollapsingToolbar">
     </TextView>
 

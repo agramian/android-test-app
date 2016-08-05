@@ -1,11 +1,12 @@
-package com.example.gramian.androidtest.androidtest.app;
+package com.abtingramian.android.androidtest;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.EditText;
 
+import com.abtingramian.android.androidtest.feature.collapsing_toolbar.CollapsingToolbarActivity;
+import com.abtingramian.android.androidtest.feature.rest_api.RedditApiSearchActivity;
 import com.example.gramian.androidtest.R;
 
 public class MainActivity extends AppCompatActivity {

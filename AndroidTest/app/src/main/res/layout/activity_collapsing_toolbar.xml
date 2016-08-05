@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.gramian.androidtest.androidtest.app.CollapsingToolbarActivity"
+    tools:context="com.abtingramian.android.androidtest.feature.collapsing_toolbar.CollapsingToolbarActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
