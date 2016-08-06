@@ -21,5 +21,13 @@
         <item name="android:paddingLeft">@dimen/fab_margin</item>
         <item name="android:background">@drawable/border</item>
     </style>
+    <style name="NavigationHeader">
+        <item name="android:padding">@dimen/group_spacing</item>
+        <item name="android:gravity">bottom</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/navigation_header_height</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/colorSecondary</item>
+    </style>
 
 </resources>

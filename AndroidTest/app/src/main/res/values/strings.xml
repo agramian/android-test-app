@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">Android Test</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
     <string name="search_text">Search query</string>
+    <string name="features">Features</string>
     <string name="button_search">Search</string>
     <string name="feature_collapsing_toolbar">Collapsing Toolbar Parallax Animation</string>
     <string name="feature_rest_api">REST API</string>
