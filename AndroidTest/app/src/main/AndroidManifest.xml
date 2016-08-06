@@ -30,11 +30,6 @@
                 android:value="com.abtingramian.android.androidtest.MainActivity" />
         </activity>
         <activity
-            android:name="com.abtingramian.android.androidtest.feature.rest_api.RedditApiSearchActivity"
-            android:label="@string/title_activity_reddit_api_search"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
-        <activity
             android:name="com.abtingramian.android.androidtest.feature.collapsing_toolbar.CollapsingToolbarActivity"
             android:label="@string/title_activity_collapsing_toolbar"
             android:theme="@style/AppTheme.NoActionBar" >

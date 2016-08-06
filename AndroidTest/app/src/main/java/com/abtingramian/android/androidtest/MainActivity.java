@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
     private void initializeFeatureMap() {
         // custom view features
         featureViewMap = new HashMap<>();
-        //featureViewMap.put(getString(R.string.feature_rest_api), "");
+        featureViewMap.put(getString(R.string.feature_rest_api), R.layout.view_api_search);
         featureViewMap.put(getString(R.string.feature_alphabet_indexer), R.layout.view_alphabet_indexer);
         // activity features
         featureActivityMap = new HashMap<>();
