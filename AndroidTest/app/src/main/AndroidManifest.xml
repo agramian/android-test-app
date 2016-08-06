@@ -34,11 +34,6 @@
             android:label="@string/title_activity_collapsing_toolbar"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
-        <activity
-            android:name="com.abtingramian.android.androidtest.feature.recyclerview_animations.RecyclerViewAnimations"
-            android:label="@string/title_activity_recyclerview_animations"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
     </application>
 
 </manifest>

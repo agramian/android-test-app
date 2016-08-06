@@ -13,7 +13,6 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 import com.abtingramian.android.androidtest.feature.collapsing_toolbar.CollapsingToolbarActivity;
-import com.abtingramian.android.androidtest.feature.recyclerview_animations.RecyclerViewAnimations;
 import com.example.gramian.androidtest.R;
 
 import java.util.HashMap;
@@ -116,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
         featureViewMap = new HashMap<>();
         featureViewMap.put(getString(R.string.feature_rest_api), R.layout.view_api_search);
         featureViewMap.put(getString(R.string.feature_alphabet_indexer), R.layout.view_alphabet_indexer);
+        featureViewMap.put(getString(R.string.feature_recyclerview_animations), R.layout.view_recyclerview_animations);
         // activity features
         featureActivityMap = new HashMap<>();
         featureActivityMap.put(getString(R.string.feature_collapsing_toolbar), CollapsingToolbarActivity.class);
