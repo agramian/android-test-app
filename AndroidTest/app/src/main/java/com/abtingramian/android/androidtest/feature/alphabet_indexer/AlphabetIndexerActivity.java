@@ -1,8 +1,9 @@
 package com.abtingramian.android.androidtest.feature.alphabet_indexer;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Context;
 import android.text.TextUtils;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
@@ -21,21 +22,28 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AlphabetIndexerActivity  extends AppCompatActivity implements View.OnClickListener {
+public class AlphabetIndexerActivity extends LinearLayout implements View.OnClickListener {
 
     Map<String, Integer> mapIndex;
     ListView fruitList;
 
+    public AlphabetIndexerActivity(Context context) {
+        super(context);
+    }
+
+    public AlphabetIndexerActivity(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_alphabet_indexer);
+    protected void onFinishInflate() {
+        super.onFinishInflate();
         String[] fruits = getResources().getStringArray(R.array.fruits_array);
 
         Arrays.asList(fruits);
 
         fruitList = (ListView) findViewById(R.id.list_fruits);
-        fruitList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, fruits));
+        fruitList.setAdapter(new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, fruits));
 
         getIndexList(fruits);
 
@@ -64,14 +72,14 @@ public class AlphabetIndexerActivity  extends AppCompatActivity implements View.
         while(it.hasNext()) {
             String letter = it.next().toUpperCase();
             if (indexList.contains(letter)) {
-                textView = (TextView) getLayoutInflater().inflate(R.layout.content_side_index_item, null);
+                textView = (TextView) LayoutInflater.from(getContext()).inflate(R.layout.content_side_index_item, null);
                 textView.setText(letter);
                 textView.setOnClickListener(this);
                 indexLayout.addView(textView);
             }
         }
         if (indexList.contains("#")) {
-            textView = (TextView) getLayoutInflater().inflate(R.layout.content_side_index_item, null);
+            textView = (TextView) LayoutInflater.from(getContext()).inflate(R.layout.content_side_index_item, null);
             textView.setText("#");
             textView.setOnClickListener(this);
             indexLayout.addView(textView);

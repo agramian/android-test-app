@@ -79,34 +79,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void selectDrawerItem(MenuItem menuItem) {
-        /*
-        // Create a new fragment and specify the fragment to show based on nav item clicked
-        Fragment fragment = null;
-        Class fragmentClass;
-        switch(menuItem.getItemId()) {
-            case R.id.nav_first_fragment:
-                fragmentClass = FirstFragment.class;
-                break;
-            case R.id.nav_second_fragment:
-                fragmentClass = SecondFragment.class;
-                break;
-            case R.id.nav_third_fragment:
-                fragmentClass = ThirdFragment.class;
-                break;
-            default:
-                fragmentClass = FirstFragment.class;
-        }
-
-        try {
-            fragment = (Fragment) fragmentClass.newInstance();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        // Insert the fragment by replacing any existing fragment
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
-        */
+        // replace content view
+        mainContent.removeAllViewsInLayout();
+        getLayoutInflater().inflate(R.layout.view_alphabet_indexer, mainContent);
         // Highlight the selected item has been done by NavigationView
         menuItem.setChecked(true);
         // Set action bar title

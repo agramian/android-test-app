@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<com.abtingramian.android.androidtest.feature.alphabet_indexer.AlphabetIndexerActivity
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
@@ -22,4 +22,4 @@
         android:orientation="vertical" >
     </LinearLayout>
 
-</LinearLayout>
+</com.abtingramian.android.androidtest.feature.alphabet_indexer.AlphabetIndexerActivity>
