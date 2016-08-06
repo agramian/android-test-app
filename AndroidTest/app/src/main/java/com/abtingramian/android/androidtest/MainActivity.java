@@ -10,19 +10,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.FrameLayout;
 
-import com.abtingramian.android.androidtest.feature.alphabet_indexer.AlphabetIndexer;
 import com.abtingramian.android.androidtest.feature.collapsing_toolbar.CollapsingToolbarActivity;
-import com.abtingramian.android.androidtest.feature.rest_api.RedditApiSearchActivity;
 import com.example.gramian.androidtest.R;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    private Map<String, String> featureMap;
+    private Map<String, Integer> featureViewMap;
+    private Map<String, Class> featureActivityMap;
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private ActionBarDrawerToggle actionBarDrawerToggle;
@@ -49,7 +47,10 @@ public class MainActivity extends AppCompatActivity {
         actionBarDrawerToggle = setupDrawerToggle();
         // add menu items dynamicall
         Menu menu = navigationView.getMenu();
-        for (String key : featureMap.keySet()) {
+        for (String key : featureViewMap.keySet()) {
+            menu.add(key);
+        }
+        for (String key : featureActivityMap.keySet()) {
             menu.add(key);
         }
         // Tie DrawerLayout events to the ActionBarToggle
@@ -81,7 +82,11 @@ public class MainActivity extends AppCompatActivity {
     public void selectDrawerItem(MenuItem menuItem) {
         // replace content view
         mainContent.removeAllViewsInLayout();
-        getLayoutInflater().inflate(R.layout.view_alphabet_indexer, mainContent);
+        if (featureViewMap.containsKey(menuItem.getTitle())) {
+            getLayoutInflater().inflate(featureViewMap.get(menuItem.getTitle()), mainContent);
+        } else if (featureActivityMap.containsKey(menuItem.getTitle())) {
+            startActivity(new Intent(this, featureActivityMap.get(menuItem.getTitle())));
+        }
         // Highlight the selected item has been done by NavigationView
         menuItem.setChecked(true);
         // Set action bar title
@@ -106,22 +111,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initializeFeatureMap() {
-        featureMap = new HashMap<>();
-        featureMap.put(getString(R.string.feature_rest_api), "");
-        featureMap.put(getString(R.string.feature_collapsing_toolbar), "");
-        featureMap.put(getString(R.string.feature_alphabet_indexer), "");
-    }
-
-    public void startActivityReddictApiSearch(View view) {
-        startActivity(new Intent(this, RedditApiSearchActivity.class));
-    }
-
-    public void startActivityCollapsingToolbar(View view) {
-        startActivity(new Intent(this, CollapsingToolbarActivity.class));
-    }
-
-    public void startActivityAlphabetIndexer(View view) {
-        startActivity(new Intent(this, AlphabetIndexer.class));
+        // custom view features
+        featureViewMap = new HashMap<>();
+        //featureViewMap.put(getString(R.string.feature_rest_api), "");
+        featureViewMap.put(getString(R.string.feature_alphabet_indexer), R.layout.view_alphabet_indexer);
+        // activity features
+        featureActivityMap = new HashMap<>();
+        featureActivityMap.put(getString(R.string.feature_collapsing_toolbar), CollapsingToolbarActivity.class);
     }
 
 }
