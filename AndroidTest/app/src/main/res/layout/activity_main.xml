@@ -20,6 +20,11 @@
             android:layout_height="?attr/actionBarSize"
             android:fitsSystemWindows="true"/>
 
+        <FrameLayout
+            android:id="@+id/main_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
     </LinearLayout>
 
     <android.support.design.widget.NavigationView
@@ -28,7 +33,6 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@android:color/white"
-        app:menu="@menu/drawer_view"
         app:headerLayout="@layout/navigation_header"/>
 
 </android.support.v4.widget.DrawerLayout>

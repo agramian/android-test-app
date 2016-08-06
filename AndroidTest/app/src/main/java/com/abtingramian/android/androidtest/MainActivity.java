@@ -8,20 +8,26 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 
 import com.abtingramian.android.androidtest.feature.alphabet_indexer.AlphabetIndexerActivity;
 import com.abtingramian.android.androidtest.feature.collapsing_toolbar.CollapsingToolbarActivity;
 import com.abtingramian.android.androidtest.feature.rest_api.RedditApiSearchActivity;
 import com.example.gramian.androidtest.R;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.HashMap;
+import java.util.Map;
 
+public class MainActivity extends AppCompatActivity {
+    private Map<String, String> featureMap;
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private Toolbar toolbar;
+    private FrameLayout mainContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +37,21 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        // content layout reference
+        mainContent = (FrameLayout) findViewById(R.id.main_content);
+        // feature map
+        initializeFeatureMap();
         // set up navigation drawer
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nvView);
         setupDrawerContent(navigationView);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         actionBarDrawerToggle = setupDrawerToggle();
+        // add menu items dynamicall
+        Menu menu = navigationView.getMenu();
+        for (String key : featureMap.keySet()) {
+            menu.add(key);
+        }
         // Tie DrawerLayout events to the ActionBarToggle
         drawer.addDrawerListener(actionBarDrawerToggle);
     }
@@ -113,6 +128,13 @@ public class MainActivity extends AppCompatActivity {
 
     private ActionBarDrawerToggle setupDrawerToggle() {
         return new ActionBarDrawerToggle(this, drawer, toolbar, R.string.drawer_open,  R.string.drawer_close);
+    }
+
+    private void initializeFeatureMap() {
+        featureMap = new HashMap<>();
+        featureMap.put(getString(R.string.feature_rest_api), "");
+        featureMap.put(getString(R.string.feature_collapsing_toolbar), "");
+        featureMap.put(getString(R.string.feature_alphabet_indexer), "");
     }
 
     public void startActivityReddictApiSearch(View view) {
