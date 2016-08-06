@@ -13,7 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import com.abtingramian.android.androidtest.feature.alphabet_indexer.AlphabetIndexerActivity;
+import com.abtingramian.android.androidtest.feature.alphabet_indexer.AlphabetIndexer;
 import com.abtingramian.android.androidtest.feature.collapsing_toolbar.CollapsingToolbarActivity;
 import com.abtingramian.android.androidtest.feature.rest_api.RedditApiSearchActivity;
 import com.example.gramian.androidtest.R;
@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startActivityAlphabetIndexer(View view) {
-        startActivity(new Intent(this, AlphabetIndexerActivity.class));
+        startActivity(new Intent(this, AlphabetIndexer.class));
     }
 
 }

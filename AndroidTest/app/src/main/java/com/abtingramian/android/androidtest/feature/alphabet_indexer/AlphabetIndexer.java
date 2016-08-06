@@ -22,16 +22,16 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AlphabetIndexerActivity extends LinearLayout implements View.OnClickListener {
+public class AlphabetIndexer extends LinearLayout implements View.OnClickListener {
 
     Map<String, Integer> mapIndex;
     ListView fruitList;
 
-    public AlphabetIndexerActivity(Context context) {
+    public AlphabetIndexer(Context context) {
         super(context);
     }
 
-    public AlphabetIndexerActivity(Context context, AttributeSet attrs) {
+    public AlphabetIndexer(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
