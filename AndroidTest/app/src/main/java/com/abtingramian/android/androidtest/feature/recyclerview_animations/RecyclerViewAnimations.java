@@ -28,7 +28,8 @@ public class RecyclerViewAnimations extends LinearLayout {
     private int animationDuration;
     private RadioGroup rgItemClickAction;
     private RadioGroup rgViewOrientation;
-    private Button buttonAdd;
+    private Button buttonAddStart;
+    private Button buttonAddEnd;
     private ItemAdapter itemAdapter;
     private LinearLayoutManager layoutManager;
 
@@ -91,12 +92,19 @@ public class RecyclerViewAnimations extends LinearLayout {
                 itemAdapter.notifyDataSetChanged();
             }
         });
-        buttonAdd = (Button) findViewById(R.id.buttonAdd);
+        buttonAddStart = (Button) findViewById(R.id.buttonAddStart);
+        buttonAddEnd= (Button) findViewById(R.id.buttonAddEnd);
         itemAdapter = new ItemAdapter(this);
         createLayoutManager();
         rv.setLayoutManager(layoutManager);
         rv.setAdapter(itemAdapter);
-        buttonAdd.setOnClickListener(new View.OnClickListener() {
+        buttonAddStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemAdapter.addItemAtPosition(0);
+            }
+        });
+        buttonAddEnd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 itemAdapter.addItemAtPosition(itemAdapter.getItemCount());

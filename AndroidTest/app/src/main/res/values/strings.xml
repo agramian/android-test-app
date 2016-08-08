@@ -71,7 +71,8 @@
     <string name="change">Change</string>
     <string name="horizontal">Horizontal</string>
     <string name="vertical">Vertical</string>
-    <string name="add">Add</string>
+    <string name="add_start">Add to start</string>
+    <string name="add_end">Add to end</string>
     <string name="duration_ms">Duration (ms)</string>
     <string-array name="duration_array">
         <item>100</item>

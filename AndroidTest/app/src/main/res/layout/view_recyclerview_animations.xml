@@ -100,11 +100,25 @@
 
         </RadioGroup>
 
-        <Button
-            android:id="@+id/buttonAdd"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/add"/>
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonAddStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_start"/>
+
+            <Button
+                android:id="@+id/buttonAddEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_end"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
