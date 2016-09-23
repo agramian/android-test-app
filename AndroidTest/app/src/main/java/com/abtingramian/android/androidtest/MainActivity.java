@@ -147,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
         featureViewMap.put(getString(R.string.feature_rest_api), R.layout.view_api_search);
         featureViewMap.put(getString(R.string.feature_alphabet_indexer), R.layout.view_alphabet_indexer);
         featureViewMap.put(getString(R.string.feature_recyclerview_animations), R.layout.view_recyclerview_animations);
+        featureViewMap.put(getString(R.string.feature_calendar), R.layout.view_calendar);
         // activity features
         featureActivityMap = new HashMap<>();
         featureActivityMap.put(getString(R.string.feature_collapsing_toolbar), CollapsingToolbarActivity.class);

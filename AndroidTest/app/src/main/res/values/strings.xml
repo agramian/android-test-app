@@ -10,11 +10,11 @@
     <string name="feature_rest_api">REST API</string>
     <string name="feature_alphabet_indexer">Alphabet Indexer</string>
     <string name="feature_recyclerview_animations">RecyclerView Animations</string>
+    <string name="feature_calendar">Calendar</string>
     <string name="title_activity_display_search_results">Search Results</string>
     <string name="title_activity_reddit_api_search">Reddit Api Search</string>
     <string name="title_activity_collapsing_toolbar">Collapsing Toolbar</string>
     <string name="title_activity_alphabet_indexer">Alphabet Indexer</string>
-    <string name="title_activity_recyclerview_animations">RecyclerView Animations</string>
     <string-array name="fruits_array">
         <item>Apples</item>
         <item>Apricots</item>
