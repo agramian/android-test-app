@@ -18,32 +18,34 @@ import com.example.gramian.androidtest.R;
 import java.util.HashMap;
 import java.util.Map;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
-    private Map<String, Integer> featureViewMap;
-    private Map<String, Class> featureActivityMap;
-    private DrawerLayout drawer;
-    private NavigationView navigationView;
-    private ActionBarDrawerToggle actionBarDrawerToggle;
-    private Toolbar toolbar;
-    private FrameLayout mainContent;
+    Map<String, Integer> featureViewMap;
+    Map<String, Class> featureActivityMap;
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawer;
+    @BindView(R.id.nvView)
+    NavigationView navigationView;
+    ActionBarDrawerToggle actionBarDrawerToggle;
+    @BindView(R.id.toolbar_main)
+    Toolbar toolbar;
+    @BindView(R.id.main_content)
+    FrameLayout mainContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         // set up toolbar
-        toolbar = (Toolbar) findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        // content layout reference
-        mainContent = (FrameLayout) findViewById(R.id.main_content);
         // feature map
         initializeFeatureMap();
         // set up navigation drawer
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        navigationView = (NavigationView) findViewById(R.id.nvView);
         setupDrawerContent(navigationView);
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         actionBarDrawerToggle = setupDrawerToggle();
         // add menu items dynamicall
         Menu menu = navigationView.getMenu();

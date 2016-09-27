@@ -3,11 +3,15 @@ package com.abtingramian.android.androidtest.feature.rest_api;
 import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
-import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.example.gramian.androidtest.R;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class RedditApiSearch extends LinearLayout {
 
@@ -21,20 +25,20 @@ public class RedditApiSearch extends LinearLayout {
         super(context, attrs);
     }
 
+    @BindView(R.id.buttonSearch)
+    Button buttonSearch;
+    @BindView(R.id.search_text)
+    EditText searchText;
+
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        findViewById(R.id.buttonSearch).setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                search();
-            }
-        });
+        ButterKnife.bind(this);
     }
 
-    public void search() {
+    @OnClick(R.id.buttonSearch)
+    void search() {
         Intent intent = new Intent(getContext(), DisplaySearchResultsActivity.class);
-        EditText searchText = (EditText) findViewById(R.id.search_text);
         String searchQuery = searchText.getText().toString();
         intent.putExtra(SEARCH_QUERY, searchQuery);
         getContext().startActivity(intent);

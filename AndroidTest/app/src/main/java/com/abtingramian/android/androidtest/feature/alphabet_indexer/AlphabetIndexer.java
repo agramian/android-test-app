@@ -22,10 +22,16 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class AlphabetIndexer extends LinearLayout implements View.OnClickListener {
 
     Map<String, Integer> mapIndex;
+    @BindView(R.id.list_fruits)
     ListView fruitList;
+    @BindView(R.id.side_index)
+    LinearLayout indexLayout;
 
     public AlphabetIndexer(Context context) {
         super(context);
@@ -38,11 +44,11 @@ public class AlphabetIndexer extends LinearLayout implements View.OnClickListene
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
+        ButterKnife.bind(this);
         String[] fruits = getResources().getStringArray(R.array.fruits_array);
 
         Arrays.asList(fruits);
 
-        fruitList = (ListView) findViewById(R.id.list_fruits);
         fruitList.setAdapter(new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, fruits));
 
         getIndexList(fruits);
@@ -64,7 +70,6 @@ public class AlphabetIndexer extends LinearLayout implements View.OnClickListene
     }
 
     private void displayIndex() {
-        LinearLayout indexLayout = (LinearLayout) findViewById(R.id.side_index);
         TextView textView;
         List<String> indexList = new ArrayList<String>(mapIndex.keySet());
         UnicodeSet localAlphabet =  LocaleData.getExemplarSet(ULocale.forLocale(getResources().getConfiguration().locale), 0);

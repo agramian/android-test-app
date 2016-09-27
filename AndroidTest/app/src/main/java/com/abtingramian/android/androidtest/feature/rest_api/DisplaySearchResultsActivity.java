@@ -13,6 +13,8 @@ import com.example.gramian.androidtest.R;
 import java.util.Collections;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -20,13 +22,14 @@ import retrofit2.Response;
 public class DisplaySearchResultsActivity extends AppCompatActivity {
 
     private static final String TAG = DisplaySearchResultsActivity.class.getSimpleName();
-    private ListView listView;
+    @BindView(R.id.search_results)
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_search_results);
-
+        ButterKnife.bind(this);
         // Get the query from the intent
         Intent intent = getIntent();
         String searchQuery = intent.getStringExtra(RedditApiSearch.SEARCH_QUERY);
@@ -56,7 +59,6 @@ public class DisplaySearchResultsActivity extends AppCompatActivity {
 
         findViewById(R.id.loading).animate().alpha(0).start();
 
-        listView = (ListView) findViewById(R.id.search_results);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_list_item_1,
