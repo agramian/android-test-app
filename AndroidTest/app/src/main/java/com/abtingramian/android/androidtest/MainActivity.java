@@ -22,6 +22,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String KEY_SELECTED_MENU_ITEM = "selected_menu_item";
     Map<String, Integer> featureViewMap;
     Map<String, Class> featureActivityMap;
     @BindView(R.id.drawer_layout)
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     ActionBarDrawerToggle actionBarDrawerToggle;
     @BindView(R.id.toolbar_main)
     Toolbar toolbar;
-    @BindView(R.id.main_content)
+    @BindView(R.id.fragmentContainer)
     FrameLayout mainContent;
     MenuItem previousMenuItem;
 
@@ -58,6 +59,22 @@ public class MainActivity extends AppCompatActivity {
         }
         // Tie DrawerLayout events to the ActionBarToggle
         drawer.addDrawerListener(actionBarDrawerToggle);
+        // set selected item on orientation change
+        if (savedInstanceState != null && savedInstanceState.containsKey(KEY_SELECTED_MENU_ITEM)) {
+            setSelectedDrawerItem(savedInstanceState.getString(KEY_SELECTED_MENU_ITEM));
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        String selectedMenuItem = "";
+        for (int i = 0; i < navigationView.getMenu().size(); i++) {
+            if (navigationView.getMenu().getItem(i).isChecked()) {
+                selectedMenuItem = navigationView.getMenu().getItem(i).getTitle().toString();
+            }
+        }
+        outState.putString(KEY_SELECTED_MENU_ITEM, selectedMenuItem);
     }
 
     @Override
@@ -82,20 +99,26 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void setSelectedDrawerItem(String title) {
+        for (int i = 0; i < navigationView.getMenu().size(); i++) {
+            navigationView.getMenu().getItem(i).setChecked(false);
+            if (navigationView.getMenu().getItem(i).getTitle().toString().equals(title)) {
+                navigationView.getMenu().getItem(i).setChecked(true);
+            }
+        }
+    }
+
     public void selectDrawerItem(MenuItem menuItem) {
         // replace content view
-        mainContent.removeAllViewsInLayout();
         if (featureViewMap.containsKey(menuItem.getTitle())) {
-            getLayoutInflater().inflate(featureViewMap.get(menuItem.getTitle()), mainContent);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragmentContainer, MainFragment.newInstance(featureViewMap.get(menuItem.getTitle())))
+                    .commit();
         } else if (featureActivityMap.containsKey(menuItem.getTitle())) {
             startActivity(new Intent(this, featureActivityMap.get(menuItem.getTitle())));
         }
-        // uncheck previous
-        if (previousMenuItem != null) {
-            previousMenuItem.setChecked(false);
-        }
         // Highlight the selected item has been done by NavigationView
-        menuItem.setChecked(true);
+        setSelectedDrawerItem(menuItem.getTitle().toString());
         previousMenuItem = menuItem;
         // Set action bar title
         setTitle(menuItem.getTitle());
