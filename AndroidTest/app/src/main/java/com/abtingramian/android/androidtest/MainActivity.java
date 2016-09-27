@@ -23,6 +23,7 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
     private static final String KEY_SELECTED_MENU_ITEM = "selected_menu_item";
+    private static final String TAG_CURRENT_FEATURE_FRAGMENT = "current_feature_fragment";
     Map<String, Integer> featureViewMap;
     Map<String, Class> featureActivityMap;
     @BindView(R.id.drawer_layout)
@@ -34,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     @BindView(R.id.fragmentContainer)
     FrameLayout mainContent;
-    MenuItem previousMenuItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +104,8 @@ public class MainActivity extends AppCompatActivity {
             navigationView.getMenu().getItem(i).setChecked(false);
             if (navigationView.getMenu().getItem(i).getTitle().toString().equals(title)) {
                 navigationView.getMenu().getItem(i).setChecked(true);
+                // Set action bar title
+                setTitle(title);
             }
         }
     }
@@ -112,16 +114,17 @@ public class MainActivity extends AppCompatActivity {
         // replace content view
         if (featureViewMap.containsKey(menuItem.getTitle())) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragmentContainer, MainFragment.newInstance(featureViewMap.get(menuItem.getTitle())))
+                    .replace(R.id.fragmentContainer, MainFragment.newInstance(featureViewMap.get(menuItem.getTitle())), TAG_CURRENT_FEATURE_FRAGMENT)
                     .commit();
         } else if (featureActivityMap.containsKey(menuItem.getTitle())) {
+            // remove current fragment if any
+            if (getSupportFragmentManager().findFragmentByTag(TAG_CURRENT_FEATURE_FRAGMENT) != null) {
+                getSupportFragmentManager().beginTransaction().remove(getSupportFragmentManager().findFragmentByTag(TAG_CURRENT_FEATURE_FRAGMENT)).commit();
+            }
             startActivity(new Intent(this, featureActivityMap.get(menuItem.getTitle())));
         }
         // Highlight the selected item has been done by NavigationView
         setSelectedDrawerItem(menuItem.getTitle().toString());
-        previousMenuItem = menuItem;
-        // Set action bar title
-        setTitle(menuItem.getTitle());
         // Close the navigation drawer
         drawer.closeDrawers();
     }
