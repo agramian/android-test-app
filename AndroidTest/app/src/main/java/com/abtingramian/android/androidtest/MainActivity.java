@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     @BindView(R.id.main_content)
     FrameLayout mainContent;
+    MenuItem previousMenuItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,8 +90,13 @@ public class MainActivity extends AppCompatActivity {
         } else if (featureActivityMap.containsKey(menuItem.getTitle())) {
             startActivity(new Intent(this, featureActivityMap.get(menuItem.getTitle())));
         }
+        // uncheck previous
+        if (previousMenuItem != null) {
+            previousMenuItem.setChecked(false);
+        }
         // Highlight the selected item has been done by NavigationView
         menuItem.setChecked(true);
+        previousMenuItem = menuItem;
         // Set action bar title
         setTitle(menuItem.getTitle());
         // Close the navigation drawer
